@@ -1,6 +1,6 @@
 # Explorations in Quantitative Finance and Financial Mathematics
 
-This repository holds four mini-projects that I completed during the Summer 2025 offering of Intro to Quantitative Methods in Finance bootcamp by The Erdos Institute. The projects span a broad array of topics in financial mathematics, namely modern portfolio theory, empirical testing of financial assumptions, analytical behavior of option pricing formulas, and stochastic volatility modeling. Together, they reflect a blend of mathematical rigor, empirical analysis, and computational implementation in Python, using real-world financial data. 
+This repository holds four mini-projects that I completed during the Summer 2025 offering of Intro to Quantitative Methods in Finance bootcamp by The Erdos Institute. The projects span a broad array of topics in financial mathematics, namely modern portfolio theory, empirical testing of financial assumptions, analytical behavior of option pricing formulas, and stochastic volatility modeling. Together, they reflect a blend of mathematical & empirical analyses, and computational implementations in Python using real-world financial data. 
 
 ---
 
