@@ -17,14 +17,18 @@ Additionally, I incorporated the effects of liquidity, with the understanding th
 ```math
 \mathcal{O}[w] = w^T\cdot\Sigma\cdot w + \lambda\left(\frac{w^T\cdot w}{V}\right) 
 ```
-where $w$ is the weight vector, $\Sigma_{ij} = \text{Cov}(S_i, S_j)$ and $V_i$ are the average volumes traded over the period of one year. However, I found that the S&P 500 companies are all too big for this to make a noticeable difference in the efficient frontier. Nevertheless, this function is included in the notebook if one chooses to trade in more illiquid assets. 
+where $w$ is the weight vector, $\Sigma_{ij} = \text{Cov}(S_i, S_j)$ and $V_i$ are the average volumes traded over the period of one year. However, I found that the S&P 500 companies are all too big for this to make a noticeable difference in the efficient frontier. Nevertheless, this function is included in the notebook if one chooses to trade in more illiquid assets.
+#### Liquidity-aware efficient frontier for a select portfolio:
+<p align="center">
+  <img src="./Graphs/efficient_frontier.png">
+</p>
 
 In the notebook, I have generated a sample portfolio for both the high-risk and low-risk scenarios by sampling the efficient frontier with $\lambda = 0$. Their stats are as follows:
 
   * High-risk portfolio: 20.05% annualized volatility, 0.21% mean daily return
   * Low-risk portfolio: 13.23% volatility, 0.07% mean daily return
 
-### Key goals achieved:
+### 🎯 Key goals achieved:
   * Developed a module that can be used to compute the efficient frontier of any given set of stocks.
   * Implemented a liquidity aware optimizer that can be used to protect against illiquid assets.
 
@@ -35,7 +39,12 @@ In the notebook, I have generated a sample portfolio for both the high-risk and 
 This project explored whether the common financial assumption of log-normal returns holds in empirical data. Using 5000 days of SPY data, I computed log returns and applied several statistical normality tests, all of which rejected the log-normal hypothesis over long horizons. I then broke the data into rolling windows to determine whether normality holds locally. The results consistently showed that shorter windows (45–50 days) passed normality tests, even for assets with high volatility, including cryptocurrencies.
 
 ### 🛠 Process:
-I divided the historical stock returns from the last 5000 days into trading windows of size `n_days`. Then, I defined a simple measure called `percent_normal` which is the number of chunks for which `normaltest` returns a p-value > 0.05 (normality cannot be rejected). 
+I divided the historical stock returns from the last 5000 days into trading windows of size `n_days`. Then, I defined a simple measure called `percent_normal` which is the number of chunks for which `normaltest` returns a p-value > 0.05 (normality cannot be rejected).
+
+#### `percent_normal` for SPY ETF:
+<p align="center">
+  <img src="./Graphs/percent_normal.png">
+</p>
 
 ### 🔍  Key findings:
  * Over long time periods, log returns clearly deviate from normality.
@@ -68,7 +77,17 @@ In this project, I explored whether modeling stochastic volatility improves hedg
 I simulated 5000 stock price paths using two models widely used in the industry for volatility modeling, namely:
 * Generalized Autoregressive Conditional Heteroskedacity GARCH(1,1), and
 * Exponential Generalized Autoregressive Conditional Heteroskedacity EGARCH(1,1),
-  both of which model time-varying volatility and fat-tailed behavior. I found that EGARCH(1,1) reproduces qualitatively the skewness and the fat tail observed in the SPY index data from Mini-Project 2 more accurately. Using Black-Scholes deltas, I performed discrete delta hedging across these paths and compared hedging profits. Surprisingly, the volatility model had limited impact on outcomes. The explanation lies in the mean-reverting nature of volatility and the fact that hedging is performed at discrete, mismatched intervals relative to volatility spikes.
+  both of which model time-varying volatility and fat-tailed behavior. I found that EGARCH(1,1) reproduces qualitatively the skewness and the fat tail observed in the SPY index data from Mini-Project 2 more accurately.
+#### Distribution of simulated volatilities using EGARCH(1,1):
+<p align="center">
+  <img src="./Graphs/EGARCH(1,1).png">
+</p>
+  Using Black-Scholes deltas, I performed discrete delta hedging across these paths and compared hedging profits. Surprisingly, the volatility model had limited impact on outcomes. The explanation lies in the mean-reverting nature of volatility and the fact that hedging is performed at discrete, mismatched intervals relative to volatility spikes.
+  
+#### Conditional Value-at-Risk (5%) of $\Delta$-hedged profits with/without volatility modeling:
+<p align="center">
+  <img src="./Graphs/CVaR-volatility.png">
+</p>
 
 ### 🔍 Key Findings:
   * GARCH(1,1) and EGARCH(1,1) capture realistic volatility dynamics, but their impact on hedging profits is minimal.
