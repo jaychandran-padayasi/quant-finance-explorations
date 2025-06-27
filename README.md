@@ -1,10 +1,10 @@
 # Explorations in Quantitative Finance and Financial Mathematics
 
-This repository holds four mini-projects that I completed during the Summer 2025 offering of Intro to Quantitative Methods in Finance bootcamp by The Erdos Institute. The projects span foundational topics in financial mathematics, namely modern portfolio theory, empirical testing of financial assumptions, analytical behavior of option pricing formulas, and stochastic volatility modeling. Together, they reflect a blend of mathematical rigor, empirical analysis, and computational implementation in Python, using real-world financial data. 
+This repository holds four mini-projects that I completed during the Summer 2025 offering of Intro to Quantitative Methods in Finance bootcamp by The Erdos Institute. The projects span a broad array of topics in financial mathematics, namely modern portfolio theory, empirical testing of financial assumptions, analytical behavior of option pricing formulas, and stochastic volatility modeling. Together, they reflect a blend of mathematical rigor, empirical analysis, and computational implementation in Python, using real-world financial data. 
 
 ---
 
-## 1. Portfolio Optimization with Liquidity Constraints
+## [1. Portfolio Optimization with Liquidity Constraints](https://github.com/jaychandran-padayasi/quant-finance-explorations/blob/main/Portfolio%20Optimization%20(Mini%20Project%201).ipynb)
 
 The first mini-project explores portfolio optimization using Modern Portfolio Theory. The objective was to create sample portfolios consisting of stocks with different risks. I aimed to create a highly customizable Jupyter notebook that can be modified easily to create many custom portfolios. 
 
@@ -30,7 +30,7 @@ In the notebook, I have generated a sample portfolio for both the high-risk and 
 
 ---
 
-## 2. Hypothesis Testing of Log-Normality in Asset Returns
+## [2. Hypothesis Testing of Log-Normality in Asset Returns](https://github.com/jaychandran-padayasi/quant-finance-explorations/blob/main/Hypothesis%20Testing%20(Mini%20Project%202).ipynb) 
 
 This project explored whether the common financial assumption of log-normal returns holds in empirical data. Using 5000 days of SPY data, I computed log returns and applied several statistical normality tests, all of which rejected the log-normal hypothesis over long horizons. I then broke the data into rolling windows to determine whether normality holds locally. The results consistently showed that shorter windows (45–50 days) passed normality tests, even for assets with high volatility, including cryptocurrencies.
 
@@ -45,7 +45,7 @@ I divided the historical stock returns from the last 5000 days into trading wind
 
 ---
 
-## 3. Analytical Limits of Black-Scholes results for European options pricing
+## [3. Analytical Limits of Black-Scholes results for European options pricing](https://github.com/jaychandran-padayasi/quant-finance-explorations/blob/main/Black-Scholes%20Equation%20(Mini%20Project%203).ipynb)
 
 In this analytical study, I investigated the behavior of European call $(C_0(S_0, K, T, r))$ and put $(P_0(S_0, K, T, r))$ option prices under the Black-Scholes model in various asymptotic regimes — as time to expiration $T \to 0$ or $\infty$, and as spot price $S_0/K \to 0$ or $\infty$. I found that option prices scale as $\sqrt{T}$ when time to maturity is short, indicating heightened sensitivity. For long-dated options, prices become insensitive to time and approach theoretical bounds related to intrinsic value and interest rates.
 
@@ -59,7 +59,7 @@ I used the analytical expression for the European options prices as derived usin
 
 ---
 
-## 4. Volatility Modeling and its effects on Hedged Profits
+## [4. Volatility Modeling and its effects on Hedged Profits](https://github.com/jaychandran-padayasi/quant-finance-explorations/blob/main/Volatility%20Modeling%20(Mini%20Project%204).ipynb)
 
 In this project, I explored whether modeling stochastic volatility improves hedging performance. As witnessed clearly in Mini-Project 2, stock returns can be safely assumed to be log-normally distributed _given_ one allows for the volatility to change with time. However, the Black-Scholes model assumes a constant volatility, $\sigma$. This begs the question, how important is volatility modeling to protect the delta-hedged profits of selling European call options? I perform an in-depth analysis using Monte Carlo simulations. 
 
