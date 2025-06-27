@@ -70,7 +70,7 @@ I used the analytical expression for European options prices as derived using Bl
 
 ## [4. Volatility Modeling and its effects on Hedged Profits](https://github.com/jaychandran-padayasi/quant-finance-explorations/blob/main/Volatility%20Modeling%20(Mini%20Project%204).ipynb)
 
-In this project, I explored whether modeling stochastic volatility improves hedging performance.  QWEASZDRFs witnessed clearly in Mini-Project 2, stock returns can be safely assumed to be log-normally distributed _given_ one allows for the volatility to change with time. However, the Black-Scholes model assumes a constant volatility, $\sigma$. This begs the question, how important is volatility modeling to protect the delta-hedged profits of selling European call options? I perform an in-depth analysis using Monte Carlo simulations. 
+In this project, I explored whether modeling stochastic volatility improves hedging performance.  As witnessed clearly in Mini-Project 2, stock returns can be safely assumed to be log-normally distributed _given_ one allows for the volatility to change with time. However, the Black-Scholes model assumes a constant volatility, $\sigma$. This begs the question, how important is volatility modeling to protect the delta-hedged profits of selling European call options? I perform an in-depth analysis using Monte Carlo simulations. 
 
 
 ### 🛠 Process:
