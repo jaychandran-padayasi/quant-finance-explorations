@@ -9,15 +9,15 @@ This repository holds four mini-projects that I completed during the Summer 2025
 The first mini-project explores portfolio optimization using Modern Portfolio Theory. The objective was to create sample portfolios consisting of stocks with different risks. I aimed to create a highly customizable Jupyter notebook that can be modified easily to create many custom portfolios. 
 
 ### 🛠 Process:
-I began by scraping the S\&P 500 ticker list along with their sector classifications, then randomly selected 20 stocks from 3 different sectors. Using historical price data, I computed mean daily returns and the covariance matrix for these stocks. I use yfinance for stock date.
+I began by scraping the S\&P 500 ticker list along with their sector classifications, then randomly selected 20 stocks from 3 different sectors. Using historical price data, I computed mean daily returns and the covariance matrix for these stocks. I used `yfinance` for stock data.
 
-The _efficient frontier_ of a set of stocks is given by the set of portfolios which are not dominated by any other portfolio. This means that one cannot construct a portfolio that has _both_ a higher expected return and a lower risk. The project notebook has a function that can be customized to generate the efficient frontier. I used the mean of simple returns over a year as proxy for expected return of the stocks.  
+The _efficient frontier_ of a set of stocks is given by the set of portfolios which are not dominated by any other portfolio. This means that one cannot construct a portfolio that has _both_ a higher expected return and a lower risk. The project notebook includes a customizable function to generate the efficient frontier. I used the mean of simple returns over a year as proxy for expected return of the stocks.  
 
 Additionally, I incorporated the effects of liquidity, with the understanding that low liquidity implies that one cannot trade high volumes of the stock without altering the market price. The "liquidity aware objective" was defined with a Lagrange multiplier $\lambda$ that punishes low liquidity as follows: 
 ```math
 \mathcal{O}[w] = w^T\cdot\Sigma\cdot w + \lambda\left(\frac{w^T\cdot w}{V}\right) 
 ```
-where $w$ is the weight vector, $\Sigma_{ij} = \text{Cov}(S_i, S_j)$ and $V_i$ are the average volumes traded over the period of one year. However, I found that the S&P 500 companies are all too big for this to make a noticeable difference in the efficient frontier. Nevertheless, this function is included in the notebook if one chooses to trade in more illiquid assets.
+where $w$ is the weight vector, $\Sigma_{ij} = \text{Cov}(S_i, S_j)$ and $V_i$ are the average volumes traded over the period of one year. However, I found that the S&P 500 companies are all too big for this to make a noticeable difference in the efficient frontier. Nevertheless, the function is included for use with more illiquid assets.
 #### Liquidity-aware efficient frontier for a select portfolio:
 <p align="center">
   <img src="./Graphs/efficient_frontier.png">
@@ -59,10 +59,10 @@ I divided the historical stock returns from the last 5000 days into trading wind
 In this analytical study, I investigated the behavior of European call $(C_0(S_0, K, T, r))$ and put $(P_0(S_0, K, T, r))$ option prices under the Black-Scholes model in various asymptotic regimes — as time to expiration $T \to 0$ or $\infty$, and as spot price $S_0/K \to 0$ or $\infty$. I found that option prices scale as $\sqrt{T}$ when time to maturity is short, indicating heightened sensitivity. For long-dated options, prices become insensitive to time and approach theoretical bounds related to intrinsic value and interest rates.
 
 ### 🛠 Process:
-I used the analytical expression for the European options prices as derived using Black-Scholes assumptions. Then I explored the various dependencies by taking carefully controlled limits of the expressions. The results obtained analytically were confirmed by visually plotting the full functions and the calculated asymptotes on the same plot. 
+I used the analytical expression for European options prices as derived using Black-Scholes assumptions. I explored key dependencies, especially on the **time-to-expiration**, $T$, and the **spot price**, $S_0$, by taking carefully controlled limits of the expressions. The results obtained analytically were confirmed by visually plotting the full functions and the calculated asymptotes on the same plot. 
 
 ### 🔍 Key findings:
-  * Short-term options exhibit strong $\sqrt{t}$ dependence.
+  * Short-term options exhibit strong $\sqrt{T}$ dependence.
   * Long-dated call options plateau to the spot price; long puts decay to zero in high-rate environments. In the real-world, this translates to the intuition that it does not make sense to sell long put options contracts in a market where the risk-free interest rate is high.
   * The offset terms from strike and interest rate (e.g., $KrT$) provide intuition for pricing asymmetries.
 
@@ -70,13 +70,13 @@ I used the analytical expression for the European options prices as derived usin
 
 ## [4. Volatility Modeling and its effects on Hedged Profits](https://github.com/jaychandran-padayasi/quant-finance-explorations/blob/main/Volatility%20Modeling%20(Mini%20Project%204).ipynb)
 
-In this project, I explored whether modeling stochastic volatility improves hedging performance. As witnessed clearly in Mini-Project 2, stock returns can be safely assumed to be log-normally distributed _given_ one allows for the volatility to change with time. However, the Black-Scholes model assumes a constant volatility, $\sigma$. This begs the question, how important is volatility modeling to protect the delta-hedged profits of selling European call options? I perform an in-depth analysis using Monte Carlo simulations. 
+In this project, I explored whether modeling stochastic volatility improves hedging performance.  QWEASZDRFs witnessed clearly in Mini-Project 2, stock returns can be safely assumed to be log-normally distributed _given_ one allows for the volatility to change with time. However, the Black-Scholes model assumes a constant volatility, $\sigma$. This begs the question, how important is volatility modeling to protect the delta-hedged profits of selling European call options? I perform an in-depth analysis using Monte Carlo simulations. 
 
 
 ### 🛠 Process:
 I simulated 5000 stock price paths using two models widely used in the industry for volatility modeling, namely:
-* Generalized Autoregressive Conditional Heteroskedacity GARCH(1,1), and
-* Exponential Generalized Autoregressive Conditional Heteroskedacity EGARCH(1,1),
+* Generalized Autoregressive Conditional Heteroskedasticity GARCH(1,1), and
+* Exponential Generalized Autoregressive Conditional Heteroskedasticity EGARCH(1,1),
   both of which model time-varying volatility and fat-tailed behavior. I found that EGARCH(1,1) reproduces qualitatively the skewness and the fat tail observed in the SPY index data from Mini-Project 2 more accurately.
 #### Distribution of simulated volatilities using EGARCH(1,1):
 <p align="center">
