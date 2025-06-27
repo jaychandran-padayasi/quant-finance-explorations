@@ -11,7 +11,7 @@ The first mini-project explores portfolio optimization using Modern Portfolio Th
 ### Process:
 I began by scraping the S\&P 500 ticker list along with their sector classifications, then randomly selected 20 stocks from 3 different sectors. Using historical price data, I computed mean daily returns and the covariance matrix for these stocks. I use yfinance for stock date.
 
-As we learnt in the lectures, the _efficient frontier_ of a set of stocks is given by the set of portfolios which are not dominated by any other portfolio. This means that one cannot construct a portfolio that has _both_ a higher expected return and a lower risk. The Jupyter notebook has a function that can be customized to generate the efficient frontier. I used the mean of simple returns over a year as proxy for expected return of the stocks.  
+The _efficient frontier_ of a set of stocks is given by the set of portfolios which are not dominated by any other portfolio. This means that one cannot construct a portfolio that has _both_ a higher expected return and a lower risk. The project notebook has a function that can be customized to generate the efficient frontier. I used the mean of simple returns over a year as proxy for expected return of the stocks.  
 
 Additionally, I incorporated the effects of liquidity, with the understanding that low liquidity implies that one cannot trade high volumes of the stock without altering the market price. The "liquidity aware objective" was defined with a Lagrange multiplier $\lambda$ that punishes low liquidity as follows: 
 ```math
